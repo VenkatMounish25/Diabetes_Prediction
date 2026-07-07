@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
@@ -57,14 +57,16 @@ print("\nTraining Samples:", len(X_train))
 print("Testing Samples :", len(X_test))
 
 model = RandomForestClassifier(
-    n_estimators=200,
+    n_estimators=20,
     random_state=42
 )
 
 print("\nTraining Model...")
 model.fit(X_train, y_train)
 print("Training Completed")
-
+joblib.dump(model, "diabetes_model.pkl")
+joblib.dump(scaler, "scaler.pkl")
+print("Model Saved Successfully!")
 train_accuracy = model.score(X_train, y_train)
 test_accuracy = model.score(X_test, y_test)
 

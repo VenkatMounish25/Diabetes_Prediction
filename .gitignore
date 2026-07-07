@@ -16,3 +16,5 @@ env/
 # Operating system files
 .DS_Store
 Thumbs.db
+diabetes_model.pkl
+scaler.pkl
